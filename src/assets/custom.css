@@ -1,0 +1,13 @@
+button.bandit-button > svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+button.bandit-button.bandit-mini > svg {
+  height: 0.8rem;
+  width: 0.8rem;
+}
+
+button.bandit-button > svg + span, button.bandit-button > span + svg {
+  margin-left: 0.5rem;
+}
