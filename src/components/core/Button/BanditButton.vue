@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import type { BanditVariant, BanditSize } from "@/types/index";
+import type { BanditSize, BanditVariant } from "@/types/index";
 
 interface BanditButtonProps {
   label?: string
   variant?: BanditVariant
   size?: BanditSize
   disabled?: boolean
-  prependIcon?: boolean
-  appendIcon?: boolean
   rounded?: boolean
 };
 
@@ -36,6 +34,7 @@ const _ = withDefaults(defineProps<BanditButtonProps>(), {
   label: "",
   variant: "default",
   size: "default",
+  disabled: false,
   rounded: true
 });
 
@@ -55,9 +54,13 @@ const onClick = (): void => {
     @click="onClick"
   >
   <template v-if="!!label">
-    <slot name="prepend-icon"></slot>
+    <slot name="prepend-icon">
+      <!-- Slot for inserting the icon before the label -->
+    </slot>
     <span>{{ label }}</span>
-    <slot name="append-icon"></slot>
+    <slot name="append-icon">
+      <!-- Slot for inserting the icon after the label -->
+    </slot>
   </template>
   <slot v-else></slot>
   </button>

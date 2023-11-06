@@ -1,15 +1,39 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import type { BanditSize } from "@/types";
+import type { BanditSize, BanditVariant } from "@/types";
 
 import ComponentDecorator from "@/components/storybook/ComponentDecorator.vue";
 import BanditButton from "@/components/core/Button/BanditButton.vue";
+
 import { MailCheck, Reply, Trash2, PenSquare } from "lucide-vue-next";
 
 type Story = StoryObj<typeof BanditButton>;
 
 const meta: Meta<typeof BanditButton> = { 
   component: BanditButton,
-  decorators: [() => ({ template: '<div class="mb-4"><story /></div>' })],
+  argTypes: {
+    label: {
+      control: "text",
+      description: "Button label"
+    },
+    variant: {
+      control: "select",
+      description: "Button variant, controls the style of the button",
+      options: ["default", "secondary", "destructive", "outline"]
+    },
+    size: {
+      control: "select",
+      description: "Button sizes, controls the height of the button",
+      options: ["default", "mini", "compact", "large"]
+    },
+    disabled: {
+      control: "boolean",
+      description: "Controls whether the button is disabled"
+    },
+    rounded: {
+      control: "boolean",
+      description: "Controls whether the button is rounded"
+    },
+  },
 };
 
 const BUTTON_SIZES: BanditSize[] = ["mini", "compact", "default", "large"];
@@ -22,7 +46,47 @@ const DECORATOR_ITEMS = [
   { key: "append-icon", value: true },
 ];
 
+/**
+ * Used for important, non-destructive user actions
+ */
 export const Primary: Story = {
+  render: () => ({
+    components: { BanditButton },
+    template: '<BanditButton label="Button" />'
+  })
+};
+
+/**
+ * Used in conjuction with the primary button to perform the complementary flow
+ */
+export const Secondary: Story = {
+  render: () => ({
+    components: { BanditButton },
+    template: '<BanditButton label="Button" variant="secondary" />'
+  })
+};
+
+/**
+ * Used for actions with a destructive effect
+ */
+export const Destructive: Story = {
+  render: () => ({
+    components: { BanditButton },
+    template: '<BanditButton label="Button" variant="destructive" />'
+  })
+};
+
+/**
+ * Used for secondary or tertiary actions and may denote a related flow
+ */
+export const Outline: Story = {
+  render: () => ({
+      components: { BanditButton },
+      template: '<BanditButton label="Button" variant="outline" />'
+  })
+};
+
+export const PrimaryReel: Story = {
   args: {
     variant: "default",
     label: "Check your Email"
@@ -51,7 +115,7 @@ export const Primary: Story = {
   }) 
 };
 
-export const Secondary: Story = {
+export const SecondaryReel: Story = {
   args: {
     variant: "secondary",
     label: "Go back"
@@ -80,7 +144,7 @@ export const Secondary: Story = {
   })
 };
 
-export const Destructive: Story = {
+export const DestructiveReel: Story = {
   args: {
     variant: "destructive",
     label: "Delete account",
@@ -109,7 +173,7 @@ export const Destructive: Story = {
   }),
 };
 
-export const Outline: Story = {
+export const OutlineReel: Story = {
   args: {
     variant: "outline",
     label: "Save as Draft"
