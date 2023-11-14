@@ -8,6 +8,7 @@ button.bandit-button.bandit-mini > svg {
   width: 0.8rem;
 }
 
-button.bandit-button > svg + span, button.bandit-button > span + svg {
+button.bandit-button > svg + span,
+button.bandit-button > span + svg {
   margin-left: 0.5rem;
 }
