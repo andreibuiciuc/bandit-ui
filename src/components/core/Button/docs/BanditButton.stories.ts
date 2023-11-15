@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { MailCheck } from 'lucide-vue-next'
-import BanditButton from '@/components/core/Button/BanditButton.vue'
+import BanditButton from '@/components/core/button/BanditButton.vue';
 
 type Story = StoryObj<typeof BanditButton>
 
