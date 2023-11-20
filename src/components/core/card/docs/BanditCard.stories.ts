@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import BanditCard from '@/components/core/card/BanditCard.vue'
 import BanditButton from '../../button/BanditButton.vue'
 import { ChevronLeft, CloudSnow } from 'lucide-vue-next'
+import { cn } from '@/utils/utils'
 
 type Story = StoryObj<typeof BanditCard>
 
@@ -82,23 +83,56 @@ export const ShippingCard: Story = {
  */
 export const WeatherCard: Story = {
   args: {
-    customCardClass: 'w-[360px] px-6 rounded-xl'
+    customCardClass: 'w-[300px] rounded-xl'
   },
   render: (args) => ({
     components: { BanditCard, BanditButton, CloudSnow },
+    data: () => ({
+      temperature: 2,
+      activeScale: 'celsius'
+    }),
+    methods: {
+      changeScale: function (newCelsiusClass: string) {
+        if (this.activeScale === newCelsiusClass) {
+          return;
+        }
+
+        if (newCelsiusClass === 'celsius') {
+          this.temperature = Math.round((this.temperature - 32) / 1.8);
+        } else {
+          this.temperature = Math.round(this.temperature * 9/5 + 32);
+        }
+
+        this.activeScale = newCelsiusClass;
+      }
+    },
     setup: () => {
-      return { args }
+      return { args, cn }
     },
     template: `
       <BanditCard v-bind="args">
         <template #content>
           <div class="flex justify-between items-center">
             <div class="flex flex-col">
-              <span class="text-lg">Snowy</span>
+              <span class="text-lg">Drizzles</span>
               <span class="text-xs text-accent-foreground">Now</span>
-              <span class="mt-4 text-4xl">2°</span>
+              <div class="mt-4 text-2xl space-x-2">
+                <span>{{ temperature }}</span>
+                <span 
+                  class="hover:cursor-pointer" 
+                  :class="cn(activeScale === 'celsius' ? '' : 'text-muted-foreground')"
+                  @click="changeScale('celsius')">
+                    °C
+                </span>
+                <span 
+                  class="hover:cursor-pointer" 
+                  :class="cn(activeScale === 'fahrenheit' ? '' : 'text-muted-foreground')" 
+                  @click="changeScale('fahrenheit')">
+                    °F
+                </span>
+              </div>
             </div>
-            <CloudSnow size="64" />
+            <CloudSnow size="48" />
           </div>
         </template>
       </BanditCard>
