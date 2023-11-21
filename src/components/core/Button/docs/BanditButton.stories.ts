@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { MailCheck } from 'lucide-vue-next'
-import BanditButton from '@/components/core/Button/BanditButton.vue'
+import BanditButton from '@/components/core/button/BanditButton.vue'
 
 type Story = StoryObj<typeof BanditButton>
 
@@ -14,7 +14,7 @@ const meta: Meta<typeof BanditButton> = {
     variant: {
       control: 'select',
       description: 'Button variant, controls the style of the button',
-      options: ['default', 'secondary', 'destructive', 'outline', 'link']
+      options: ['default', 'secondary', 'destructive', 'outline', 'ghost', 'link']
     },
     size: {
       control: 'select',

@@ -1,3 +1,3 @@
-import BanditButton from '@/components/core/Button/index'
+import BanditButton from '@/components/core/button/BanditButton.vue'
 
 export default { BanditButton }
