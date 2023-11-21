@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import BanditBadge from '@/components/plus/badge/BanditBadge.vue';
+import { Hourglass } from 'lucide-vue-next'
+import BanditBadge from '@/components/plus/badge/BanditBadge.vue'
 
 type Story = StoryObj<typeof BanditBadge>
 
@@ -7,17 +8,17 @@ const meta: Meta<typeof BanditBadge> = {
   component: BanditBadge,
   argTypes: {
     label: {
-      control: "text",
-      description: "Badge label"
+      control: 'text',
+      description: 'Badge label'
     },
     variant: {
-      control: "select",
-      description: "Badge variant, controls the style of the badge",
+      control: 'select',
+      description: 'Badge variant, controls the style of the badge',
       options: ['default', 'secondary', 'destructive', 'outline']
     },
     customClass: {
-      control: "text",
-      description: "Custom Tailwind string of classes for customization"
+      control: 'text',
+      description: 'Custom Tailwind string of classes for customization'
     }
   }
 }
@@ -27,7 +28,7 @@ const meta: Meta<typeof BanditBadge> = {
  */
 export const Primary: Story = {
   args: {
-    label: "Primary",
+    label: 'Primary'
   },
   render: (args) => ({
     components: { BanditBadge },
@@ -43,8 +44,8 @@ export const Primary: Story = {
  */
 export const Secondary: Story = {
   args: {
-    label: "Secondary",
-    variant: "secondary"
+    label: 'Secondary',
+    variant: 'secondary'
   },
   render: (args) => ({
     components: { BanditBadge },
@@ -60,8 +61,8 @@ export const Secondary: Story = {
  */
 export const Destructive: Story = {
   args: {
-    label: "Destructive",
-    variant: "destructive"
+    label: 'Destructive',
+    variant: 'destructive'
   },
   render: (args) => ({
     components: { BanditBadge },
@@ -77,8 +78,8 @@ export const Destructive: Story = {
  */
 export const Outline: Story = {
   args: {
-    label: "Outline",
-    variant: "outline"
+    label: 'Outline',
+    variant: 'outline'
   },
   render: (args) => ({
     components: { BanditBadge },
@@ -89,4 +90,24 @@ export const Outline: Story = {
   })
 }
 
-export default meta;
+/**
+ * Custom badge using icons also
+ */
+export const Custom: Story = {
+  render: (args) => ({
+    components: { BanditBadge, Hourglass },
+    setup: () => {
+      return { args }
+    },
+    template: `
+    <BanditBadge variant="outline" customClass="py-2">
+      <div class="flex items-center">
+        <Hourglass size="12" />
+        <span class="pl-1">Time tracker</span>
+      </div>
+    </BanditBadge>
+    `
+  })
+}
+
+export default meta
