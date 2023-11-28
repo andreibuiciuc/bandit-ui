@@ -2,13 +2,11 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 
 interface BanditButtonProps extends VariantProps<typeof button> {
-  label?: string
   disabled?: boolean
-  rounded?: boolean
 }
 
 const button = cva(
-  'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -20,19 +18,15 @@ const button = cva(
         link: 'text-primary underline-offset-4 hover:underline'
       },
       size: {
-        mini: 'bandit-mini h-6 px-2 text-xs',
-        compact: 'bandit-compact h-7 px-3',
-        default: 'bandit-default h-9 px-4 py-2',
-        large: 'bandit-large h-12 px-8 text-lg'
-      },
-      rounded: {
-        true: 'rounded-md'
+        default: 'h-9 px-4 py-2',
+        sm: 'h-8 rounded-md px-3 text-xs',
+        lg: 'h-10 rounded-md px-8',
+        icon: 'h-9 w-9'
       }
     },
     defaultVariants: {
       variant: 'default',
-      size: 'default',
-      rounded: true
+      size: 'default'
     }
   }
 )
@@ -41,8 +35,6 @@ withDefaults(
   defineProps<{
     variant: BanditButtonProps['variant']
     size: BanditButtonProps['size']
-    rounded: BanditButtonProps['rounded']
-    label: BanditButtonProps['label']
     disabled: BanditButtonProps['disabled']
   }>(),
   {
@@ -63,19 +55,10 @@ const onClick = (): void => {
 <template>
   <button
     class="bandit-button"
-    :class="button({ variant, size, rounded })"
+    :class="button({ variant, size })"
     :disabled="disabled"
     @click="onClick"
   >
-    <template v-if="!!label">
-      <slot name="prepend-icon">
-        <!-- Slot for inserting the icon before the label -->
-      </slot>
-      <span>{{ label }}</span>
-      <slot name="append-icon">
-        <!-- Slot for inserting the icon after the label -->
-      </slot>
-    </template>
-    <slot v-else></slot>
+    <slot></slot>
   </button>
 </template>
