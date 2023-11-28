@@ -3,7 +3,6 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/utils/utils'
 
 interface BanditBadgeProps extends VariantProps<typeof badge> {
-  label?: string
   customClass?: string
 }
 
@@ -29,21 +28,16 @@ const badge = cva(
 withDefaults(
   defineProps<{
     variant: BanditBadgeProps['variant']
-    label: BanditBadgeProps['label']
     customClass: BanditBadgeProps['customClass']
   }>(),
   {
-    variant: 'default',
-    label: '',
-    customClass: ''
+    variant: 'default'
   }
 )
 </script>
 
 <template>
   <div :class="cn(badge({ variant }), customClass)">
-    <!--Slot for inserting content-->
-    <slot v-if="!label"></slot>
-    <template v-else>{{ label }}</template>
+    <slot></slot>
   </div>
 </template>

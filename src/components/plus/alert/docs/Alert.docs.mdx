@@ -1,17 +1,17 @@
 import { ArgTypes, Meta, Story, Stories, Subtitle, Title } from '@storybook/blocks'
 
-import * as BanditAlertStories from './BanditAlert.stories'
+import * as AlertStories from './Alert.stories'
 
-<Meta of={BanditAlertStories} />
+<Meta of={AlertStories} />
 
 <Title>Alert</Title>
 
 <Subtitle>Displays a callout for user attention.</Subtitle>
 
-<Story of={BanditAlertStories.Default} />
+<Story of={AlertStories.Default} />
 
 ```js
-import { BanditAlert } from '@bandit/ui'
+import { Alert, AlertTitle, AlertDescription } from '@bandit/ui'
 ```
 
 <ArgTypes />

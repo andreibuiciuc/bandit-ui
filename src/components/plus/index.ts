@@ -1,7 +1,7 @@
-import BanditAlert from '@/components/plus/alert/BanditAlert.vue'
-import BanditBadge from '@/components/plus/badge/BanditBadge.vue'
+import * as AlertComponents from '@/components/plus/alert/index'
+import Badge from './badge/Badge.vue'
 
 export default {
-  BanditAlert, 
-  BanditBadge
+  ...AlertComponents,
+  Badge
 }
