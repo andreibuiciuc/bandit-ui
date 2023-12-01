@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { cn } from '@/utils/utils';
+import { cn } from '@/utils/utils'
 
-interface TableFooter { customClass?: string }
-defineProps<TableFooter>();
-
+interface TableFooter {
+  customClass?: string
+}
+defineProps<TableFooter>()
 </script>
 
 <template>

@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { cn } from '@/utils/utils';
+import { cn } from '@/utils/utils'
 
-interface TableCaptionProps { customClass?: string };
-defineProps<TableCaptionProps>();
-
+interface TableCaptionProps {
+  customClass?: string
+}
+defineProps<TableCaptionProps>()
 </script>
 
 <template>

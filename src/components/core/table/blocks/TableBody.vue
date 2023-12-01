@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { cn } from '@/utils/utils';
+import { cn } from '@/utils/utils'
 
-interface TableBodyProps { customClass?: string }
-defineProps<TableBodyProps>();
-
+interface TableBodyProps {
+  customClass?: string
+}
+defineProps<TableBodyProps>()
 </script>
 
 <template>
