@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { cva, type VariantProps } from 'class-variance-authority'
 
-interface BanditButtonProps extends VariantProps<typeof button> {
+interface ButtonProps extends VariantProps<typeof button> {
+  label?: string
   disabled?: boolean
 }
 
@@ -33,15 +34,15 @@ const button = cva(
 
 withDefaults(
   defineProps<{
-    variant: BanditButtonProps['variant']
-    size: BanditButtonProps['size']
-    disabled: BanditButtonProps['disabled']
+    variant: ButtonProps['variant']
+    size: ButtonProps['size']
+    label: ButtonProps['label']
+    disabled: ButtonProps['disabled']
   }>(),
   {
-    label: '',
     variant: 'default',
     size: 'default',
-    rounded: true
+    label: '',
   }
 )
 
@@ -54,11 +55,16 @@ const onClick = (): void => {
 
 <template>
   <button
+    :aria-label="label"
+    :aria-disabled="disabled"
+    tabindex="0"
+    role="button"
     class="bandit-button"
     :class="button({ variant, size })"
     :disabled="disabled"
     @click="onClick"
   >
-    <slot></slot>
+    <template v-if="!!label">{{ label }}</template>
+    <slot v-else></slot>
   </button>
 </template>
