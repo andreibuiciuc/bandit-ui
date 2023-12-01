@@ -42,7 +42,7 @@ withDefaults(
   {
     variant: 'default',
     size: 'default',
-    label: '',
+    label: ''
   }
 )
 
