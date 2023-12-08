@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { cn } from '@/utils/utils'
+import { cn, type CustomConfig } from '@/utils/utils'
 
-interface TableBodyProps {
-  customClass?: string
-}
+type TableBodyProps = Pick<CustomConfig, "customClass">;
 defineProps<TableBodyProps>()
+
 </script>
 
 <template>

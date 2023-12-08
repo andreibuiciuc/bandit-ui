@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { AlertTriangle, HeartHandshake } from 'lucide-vue-next'
-import { Alert, AlertTitle, AlertDescription } from '@/components/plus/alert/index'
+import { Alert, AlertTitle, AlertDescription, type AlertSlots } from '@/components/plus/alert/index'
+import { html } from '@/utils/utils'
 
 type Story = StoryObj<typeof Alert>
 
@@ -14,10 +15,10 @@ const meta: Meta<typeof Alert> = {
 export const Default: Story = {
   render: () => ({
     components: { Alert, AlertTitle, AlertDescription, HeartHandshake },
-    template: `
+    template: html`
       <Alert>
         <HeartHandshake class="h-4 w-4" />
-        <AlertTitle>Heads up!</AlertTitle>
+        <AlertTitle className="text-amber-500">Heads up!</AlertTitle>
         <AlertDescription>
           You can add components to your app using the cli (not yet).
         </AlertDescription>
@@ -32,7 +33,7 @@ export const Default: Story = {
 export const Destructive: Story = {
   render: () => ({
     components: { Alert, AlertTitle, AlertDescription, AlertTriangle },
-    template: `
+    template: html`
       <Alert variant="destructive">
         <AlertTriangle class="h-4 w-4" />
         <AlertTitle>Error</AlertTitle>

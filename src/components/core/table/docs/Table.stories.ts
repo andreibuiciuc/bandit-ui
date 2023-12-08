@@ -9,6 +9,7 @@ import {
   TableCell,
   TableCaption
 } from '../index'
+import { html } from '@/utils/utils'
 
 type Story = StoryObj<typeof Table>
 
@@ -72,7 +73,7 @@ export const Default: Story = {
     setup: () => {
       return { invoices }
     },
-    template: `
+    template: html`
       <Table>
         <TableCaption>A list of your recent invoices</TableCaption>
         <TableHeader>

@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { cn } from '@/utils/utils'
+import { cn, type CustomConfig } from '@/utils/utils'
 
-interface TableCaptionProps {
-  customClass?: string
-}
+type TableCaptionProps = Pick<CustomConfig, "customClass">
 defineProps<TableCaptionProps>()
+
 </script>
 
 <template>
