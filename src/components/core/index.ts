@@ -1,3 +1,26 @@
-import BanditButton from '@/components/core/button/BanditButton.vue'
+import { Button } from '@/components/core/button/index'
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption
+} from '@/components/core/table/index'
 
-export default { BanditButton }
+export {
+  // Button
+  Button,
+
+  // Table
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption
+}

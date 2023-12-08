@@ -1,0 +1,28 @@
+import { ArgTypes, Meta, Story, Stories, Subtitle, Title } from '@storybook/blocks'
+
+import * as TableStories from './Table.stories'
+
+<Meta of={TableStories} />
+
+<Title>Table</Title>
+
+<Subtitle>A responsive table component.</Subtitle>
+
+<Story of={TableStories.Default} />
+
+```js
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption
+} from '@bandit/ui'
+```
+
+<ArgTypes />
+
+<Stories />

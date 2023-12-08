@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { cn } from '@/utils/utils'
+import { cn, type CustomConfig } from '@/utils/utils'
 
-defineProps<{ customClass?: string }>()
+type AlertTitleProps = Pick<CustomConfig, "customClass">
+defineProps<AlertTitleProps>()
+
 </script>
 
 <template>
