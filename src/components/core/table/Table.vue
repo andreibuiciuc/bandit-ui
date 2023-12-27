@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { cn, type CustomConfig } from '@/utils/utils'
 
-type TableProps = CustomConfig;
+type TableProps = CustomConfig
 defineProps<TableProps>()
-
 </script>
 
 <template>

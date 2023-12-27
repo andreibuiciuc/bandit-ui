@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { cn, type CustomConfig } from '@/utils/utils'
 
-type AlertDescriptionProps = Pick<CustomConfig, "customClass">
+type AlertDescriptionProps = Pick<CustomConfig, 'customClass'>
 defineProps<AlertDescriptionProps>()
-
 </script>
 
 <template>
