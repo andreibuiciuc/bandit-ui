@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { cn, type CustomConfig } from '@/utils/utils'
 
-type TableHeadProps = Pick<CustomConfig, "customClass">
+type TableHeadProps = Pick<CustomConfig, 'customClass'>
 defineProps<TableHeadProps>()
-
 </script>
 
 <template>

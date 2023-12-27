@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { cn, type CustomConfig } from '@/utils/utils'
 
-type TableCellProps = Pick<CustomConfig, "customClass">
+type TableCellProps = Pick<CustomConfig, 'customClass'>
 defineProps<TableCellProps>()
-
 </script>
 
 <template>
